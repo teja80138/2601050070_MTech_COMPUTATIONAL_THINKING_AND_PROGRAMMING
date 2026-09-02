@@ -81,6 +81,9 @@ MERGE_SORT(arr)
 
 7. Return merged list
 ```
+
+# Merge Sort
+
 ```
 def merge(left, right):
     result = []
