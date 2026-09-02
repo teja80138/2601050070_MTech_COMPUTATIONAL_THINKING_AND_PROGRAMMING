@@ -17,11 +17,6 @@ It uses the **divide-and-conquer** approach:
 3. Merge the sorted halves.
 4. The final result is an ascending ordered list.
 
-## Requirements
-
-- Python 3
-- Jupyter Notebook / JupyterLab
-- No external Python libraries are required.
 
 ## Files
 
@@ -48,21 +43,7 @@ jupyter notebook
 
 4. Run each cell from top to bottom.
 
-### Method 2: JupyterLab
 
-Install JupyterLab:
-
-```bash
-pip install jupyterlab
-```
-
-Start it:
-
-```bash
-jupyter lab
-```
-
-Open the `.ipynb` file and run the cells.
 
 ## Example
 
@@ -111,6 +92,3 @@ MERGE_SORT(arr)
 
 **Space Complexity:** O(n)
 
-## Conclusion
-
-Merge Sort is an efficient sorting algorithm for arranging thousands of library accession numbers. Its **O(n log n)** time complexity makes it suitable for large datasets.
