@@ -17,47 +17,47 @@ It uses the **divide-and-conquer** approach:
 3. Merge the sorted halves.
 4. The final result is an ascending ordered list.
 
-
-## Files
-
-- `library_book_arrangement_merge_sort.ipynb` — Jupyter Notebook containing the algorithm, implementation, example, and user-input program.
-- `README.md` — Project documentation.
-
-## How to Run
-
-### Method 1: Jupyter Notebook
-
-1. Install Jupyter if needed:
-
-```bash
-pip install notebook
-```
-
-2. Start Jupyter Notebook:
-
-```bash
-jupyter notebook
-```
-
-3. Open `library_book_arrangement_merge_sort.ipynb`.
-
-4. Run each cell from top to bottom.
-
-
-
 ## Example
 
-Input:
+1. Divide the array
+[105, 23, 78, 12, 56, 9, 101]
+              ↓
+       [105, 23, 78]    [12, 56, 9, 101]
 
-```text
-105 23 78 12 56 9 101
-```
+Divide again:
 
-Output:
+[105] [23, 78]    [12, 56] [9, 101]
 
-```text
-Before sorting: [105, 23, 78, 12, 56, 9, 101]
-After sorting: [9, 12, 23, 56, 78, 101]
+Divide until each part has one element:
+
+[105] [23] [78] [12] [56] [9] [101]
+2. Merge in sorted order
+
+Merge:
+
+[23] + [78] → [23, 78]
+
+[12] + [56] → [12, 56]
+
+[9] + [101] → [9, 101]
+
+Now:
+
+[105] [23, 78] [12, 56] [9, 101]
+
+Merge the left side:
+
+[105] + [23, 78]
+       ↓
+[23, 78, 105]
+
+Merge the right side:
+
+[12, 56] + [9, 101]
+          ↓
+[9, 12, 56, 101]
+3. Final merge
+[23, 78, 105] + [9, 12, 56, 101]
 ```
 
 ## Algorithm
@@ -81,7 +81,56 @@ MERGE_SORT(arr)
 
 7. Return merged list
 ```
+```
+def merge(left, right):
+    result = []
+    i = 0
+    j = 0
 
+    # Compare elements from both lists
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    # Add remaining elements
+    result.extend(left[i:])
+    result.extend(right[j:])
+
+    return result
+
+
+def merge_sort(arr):
+    # Base case
+    if len(arr) <= 1:
+        return arr
+
+    # Find the middle
+    mid = len(arr) // 2
+
+    # Divide into two halves
+    left = arr[:mid]
+    right = arr[mid:]
+
+    # Recursively sort both halves
+    left = merge_sort(left)
+    right = merge_sort(right)
+
+    # Merge sorted halves
+    return merge(left, right)
+
+# Example library accession numbers
+books = [105, 23, 78, 12, 56, 9, 101]
+
+print("Before sorting:", books)
+
+sorted_books = merge_sort(books)
+
+print("After sorting:", sorted_books)
+```
 ## Complexity Analysis
 
 | Case | Time Complexity |
