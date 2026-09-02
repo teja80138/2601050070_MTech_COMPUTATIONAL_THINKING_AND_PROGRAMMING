@@ -82,7 +82,7 @@ MERGE_SORT(arr)
 7. Return merged list
 ```
 
-# Merge Sort
+## Python Code
 
 ```
 def merge(left, right):
@@ -133,7 +133,16 @@ print("Before sorting:", books)
 sorted_books = merge_sort(books)
 
 print("After sorting:", sorted_books)
+
 ```
+##Input:
+        [105, 23, 78, 12, 56, 9, 101]
+
+##Output:
+        [9, 12, 23, 56, 78, 101, 105]
+
+
+        
 ## Complexity Analysis
 
 | Case | Time Complexity |
